@@ -6,6 +6,12 @@ const ProductSchema = require("./ProductSchema");  // Import your existing Produ
 // Order Schema
 const OrderSchema = new mongoose.Schema(
   {
+    order_id: {
+      type: Number,
+      unique: true,
+      // autoIncrement: true,
+      required: true,
+    },
     user_id: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User", // Reference to the User collection
@@ -20,22 +26,22 @@ const OrderSchema = new mongoose.Schema(
       type: Date,
       default: Date.now,  // Automatically set the current date
     },
-    status: {
-      type: String,
-      enum: ["pending", "shipped", "delivered", "cancelled"],  // Enum for order status
-      default: "pending",  // Default order status is 'pending'
-    },
-    shipping_address: {
-      type: String,
-      required: true,  // Ensure shipping address is always provided
-    },
-    payment_status: {
-      type: String,
-      enum: ["unpaid", "paid"],
-      default: "unpaid",  // Default payment status is 'unpaid'
-    },
+    // status: {
+    //   type: String,
+    //   enum: ["pending", "shipped", "delivered", "cancelled"],  // Enum for order status
+    //   default: "pending",  // Default order status is 'pending'
+    // },
+    // shipping_address: {
+    //   type: String,
+    //   required: true,  // Ensure shipping address is always provided
+    // },
+    // payment_status: {
+    //   type: String,
+    //   enum: ["unpaid", "paid"],
+    //   default: "unpaid",  // Default payment status is 'unpaid'
+    // },
   },
-  { timestamps: true } // Adds createdAt and updatedAt fields
+  // { timestamps: true } // Adds createdAt and updatedAt fields
 );
 
 // const Order = mongoose.model("Order", OrderSchema);

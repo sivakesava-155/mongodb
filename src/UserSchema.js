@@ -7,7 +7,7 @@ const UserSchema = new mongoose.Schema(
     id: {
       type: Number, 
       unique: true,  // Ensure the user id is unique
-      required: true
+      // required: true
     },
     name: {
       type: String,
@@ -34,14 +34,14 @@ const UserSchema = new mongoose.Schema(
   { timestamps: true }  // Automatically adds createdAt and updatedAt timestamps
 );
 
-// Pre-save hook for password hashing
-UserSchema.pre("save", async function (next) {
-  if (this.isModified("password")) {
-    // Hash the password before saving it
-    this.password = await bcrypt.hash(this.password, 10);
-  }
-  next();
-});
+// // Pre-save hook for password hashing
+// UserSchema.pre("save", async function (next) {
+//   if (this.isModified("password")) {
+//     // Hash the password before saving it
+//     this.password = await bcrypt.hash(this.password, 10);
+//   }
+//   next();
+// });
 
 // Method to compare passwords (for authentication)
 UserSchema.methods.comparePassword = async function (candidatePassword) {
