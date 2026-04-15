@@ -14,9 +14,6 @@
 		new vegProduct(newProduct).save();
 		
 	}
-   
-
-
 
 	// Saving Multiple Veg Products
 	const addNewVegProducts = (newProducts) => {
